@@ -1,73 +1,113 @@
-# React + TypeScript + Vite
+# Task Manager Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is the frontend of a Task Manager application built using React and TypeScript. It interacts with a REST API backend to perform CRUD operations on tasks.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application allows users to:
 
-## React Compiler
+* View all tasks
+* Add a new task
+* Mark tasks as completed
+* Delete tasks
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* React (Vite + TypeScript)
+* Tailwind CSS
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Display list of tasks from backend
+* Add new tasks using a form
+* Mark tasks as completed
+* Delete tasks
+* Loading state handling
+* Error handling with toast notifications
+* Clean and modular component structure
+
+---
+
+## Project Structure
+
+```bash id="kclz4f"
+src/
+ ├── components/
+ │    ├── TaskForm.tsx
+ │    ├── TaskList.tsx
+ │    ├── TaskItem.tsx
+ │    ├── Loader.tsx
+ │    └── ErrorToast.tsx
+ │
+ ├── hooks/
+ │    └── useTasks.ts
+ │
+ ├── services/
+ │    └── taskApi.ts
+ │
+ ├── types/
+ │    └── task.ts
+ │
+ ├── App.tsx
+ └── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Setup Instructions
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Install dependencies
+
+```bash id="v5z7hm"
+npm install
 ```
+
+---
+
+## Environment Configuration
+
+Create a `.env` file in the root of the frontend project:
+
+### Local Development
+
+```env id="yjxg8r"
+VITE_API_URL=http://localhost:5000
+```
+
+### Production / Deployment
+
+```env id="n7i1y8"
+VITE_API_URL=https://your-backend-url
+```
+
+---
+
+## Run the Application
+
+```bash id="nv3d3c"
+npm run dev
+```
+
+The app will be available at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## Notes
+
+* The frontend relies on a backend API for all task operations.
+* Environment variables are used to switch between local and deployed backend.
+* The UI is intentionally kept simple to focus on functionality and structure.
+
+---
+
+## Author
+
+Rohit Sawant
